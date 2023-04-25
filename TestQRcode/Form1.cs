@@ -33,18 +33,32 @@ namespace TestQRcode
                 cboDevice.Items.Add(filterInfo.Name);
             cboDevice.SelectedIndex = 0;
         }
-
+        private void StartCapturing()
+        {
+            if (captureDevice != null && !captureDevice.IsRunning)
+            {
+                captureDevice.Start();
+                timer1.Start();
+            }
+        }
         private void btnStart_Click(object sender, EventArgs e)
         {
             captureDevice = new VideoCaptureDevice(filterInfoCollection[cboDevice.SelectedIndex].MonikerString);
             captureDevice.NewFrame += CaptureDevice_NewFrame;
-            captureDevice.Start();
-            timer1.Start();
+            StartCapturing();
         }
 
         private void CaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
-            pictureBox1.Image = (Bitmap)eventArgs.Frame.Clone();
+            Bitmap clonedBitmap = (Bitmap)eventArgs.Frame.Clone();
+            pictureBox1.Image = clonedBitmap;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+        }
+
+        private Bitmap CropImage(Bitmap bitmap, Rectangle cropArea)
+        {
+            Bitmap croppedBitmap = bitmap.Clone(cropArea, bitmap.PixelFormat);
+            return croppedBitmap;
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -73,7 +87,7 @@ namespace TestQRcode
 
 
         }
-        private void timer1_Tick(object sender, EventArgs e)
+        private async void timer1_Tick(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null)
             {
@@ -93,8 +107,11 @@ namespace TestQRcode
                         string weight = fields[2];
                         ThongtinQR qr = new ThongtinQR(qrCodeNumber, productName, weight);
                         listQR.Add(qr);
+                        dataGridView1.DataSource = null;
                         dataGridView1.DataSource = listQR;
                     }
+                    await Task.Delay(5000);
+                    StartCapturing();
                 }
             }
 

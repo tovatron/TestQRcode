@@ -79,7 +79,7 @@ namespace TestQRcode
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.pictureBox1.Location = new System.Drawing.Point(12, 69);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(531, 504);
+            this.pictureBox1.Size = new System.Drawing.Size(509, 504);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
