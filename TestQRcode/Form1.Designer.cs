@@ -36,9 +36,9 @@ namespace TestQRcode
             this.cboDevice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtQRCode = new System.Windows.Forms.TextBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.bntStop = new System.Windows.Forms.Button();
             this.colQRCodeNumber = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColProductName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColWeight = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,7 +48,7 @@ namespace TestQRcode
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(567, 69);
+            this.btnStart.Location = new System.Drawing.Point(254, 25);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(75, 23);
             this.btnStart.TabIndex = 0;
@@ -60,15 +60,15 @@ namespace TestQRcode
             // 
             this.cboDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboDevice.FormattingEnabled = true;
-            this.cboDevice.Location = new System.Drawing.Point(118, 25);
+            this.cboDevice.Location = new System.Drawing.Point(93, 25);
             this.cboDevice.Name = "cboDevice";
-            this.cboDevice.Size = new System.Drawing.Size(249, 21);
+            this.cboDevice.Size = new System.Drawing.Size(155, 21);
             this.cboDevice.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(34, 28);
+            this.label1.Location = new System.Drawing.Point(9, 28);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 2;
@@ -77,19 +77,11 @@ namespace TestQRcode
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 69);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(509, 504);
+            this.pictureBox1.Size = new System.Drawing.Size(236, 233);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // txtQRCode
-            // 
-            this.txtQRCode.Location = new System.Drawing.Point(568, 116);
-            this.txtQRCode.Multiline = true;
-            this.txtQRCode.Name = "txtQRCode";
-            this.txtQRCode.Size = new System.Drawing.Size(250, 102);
-            this.txtQRCode.TabIndex = 4;
             // 
             // timer1
             // 
@@ -103,11 +95,21 @@ namespace TestQRcode
             this.colQRCodeNumber,
             this.ColProductName,
             this.ColWeight});
-            this.dataGridView1.Location = new System.Drawing.Point(568, 240);
+            this.dataGridView1.Location = new System.Drawing.Point(750, 12);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(434, 333);
             this.dataGridView1.TabIndex = 5;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // bntStop
+            // 
+            this.bntStop.Location = new System.Drawing.Point(344, 25);
+            this.bntStop.Name = "bntStop";
+            this.bntStop.Size = new System.Drawing.Size(75, 23);
+            this.bntStop.TabIndex = 6;
+            this.bntStop.Text = "&Stop";
+            this.bntStop.UseVisualStyleBackColor = true;
+            this.bntStop.Click += new System.EventHandler(this.bntStop_Click);
             // 
             // colQRCodeNumber
             // 
@@ -125,8 +127,8 @@ namespace TestQRcode
             // 
             // ColWeight
             // 
-            this.ColWeight.DataPropertyName = "Weight";
-            this.ColWeight.HeaderText = "Cân nặng";
+            this.ColWeight.DataPropertyName = "Type";
+            this.ColWeight.HeaderText = "Type";
             this.ColWeight.Name = "ColWeight";
             // 
             // Form1
@@ -134,8 +136,8 @@ namespace TestQRcode
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1196, 585);
+            this.Controls.Add(this.bntStop);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.txtQRCode);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cboDevice);
@@ -163,9 +165,9 @@ namespace TestQRcode
         private System.Windows.Forms.ComboBox cboDevice;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtQRCode;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private Button bntStop;
         private DataGridViewTextBoxColumn colQRCodeNumber;
         private DataGridViewTextBoxColumn ColProductName;
         private DataGridViewTextBoxColumn ColWeight;

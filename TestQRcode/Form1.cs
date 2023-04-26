@@ -47,7 +47,16 @@ namespace TestQRcode
             captureDevice.NewFrame += CaptureDevice_NewFrame;
             StartCapturing();
         }
-
+        private void bntStop_Click(object sender, EventArgs e)
+        {
+            if (captureDevice != null)
+            {
+                captureDevice.Stop();
+                captureDevice.NewFrame -= CaptureDevice_NewFrame;
+                captureDevice = null;
+                pictureBox1.Image = null;
+            }
+        }
         private void CaptureDevice_NewFrame(object sender, NewFrameEventArgs eventArgs)
         {
             Bitmap clonedBitmap = (Bitmap)eventArgs.Frame.Clone();
@@ -75,14 +84,14 @@ namespace TestQRcode
             private string productname;
             public string Productname { get => productname; set => productname = value; }
 
-            private string weight;
-            public string Weight { get => weight; set => weight = value; }
+            private string type;
+            public string Type { get => type; set => type = value; }
 
-            public ThongtinQR(string number, string productname, string weight)
+            public ThongtinQR(string number, string productname, string type)
             {
                 Number = number;
                 Productname = productname;
-                Weight = weight;
+                Type = type;
             }
 
 
@@ -95,7 +104,6 @@ namespace TestQRcode
                 Result result = barcodeReader.Decode((Bitmap)pictureBox1.Image);
                 if (result != null)
                 {
-                    txtQRCode.Text = result.ToString();
                     timer1.Stop();
                     if (captureDevice.IsRunning)
                         captureDevice.Stop();
@@ -104,8 +112,8 @@ namespace TestQRcode
                     {
                         string qrCodeNumber = fields[0];
                         string productName = fields[1];
-                        string weight = fields[2];
-                        ThongtinQR qr = new ThongtinQR(qrCodeNumber, productName, weight);
+                        string type = fields[2];
+                        ThongtinQR qr = new ThongtinQR(qrCodeNumber, productName, type);
                         listQR.Add(qr);
                         dataGridView1.DataSource = null;
                         dataGridView1.DataSource = listQR;
