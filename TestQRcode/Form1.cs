@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -106,10 +107,7 @@ namespace TestQRcode
             private string eitime;
             public string Eitime { get => eitime; set => eitime = value; }
 
-            private string stime;
-            public string Stime { get => stime; set => stime = value; }
-
-            public ThongtinQR(string number, string productname, string type, string weight, string stats, string eitime, string stime)
+            public ThongtinQR(string number, string productname, string type, string weight, string stats, string eitime)
             {
                 Number = number;
                 Productname = productname;
@@ -117,7 +115,6 @@ namespace TestQRcode
                 Weight = weight;
                 Stats = stats;
                 Eitime = eitime;
-                Stime = stime;
             }
 
 
@@ -137,9 +134,9 @@ namespace TestQRcode
             worksheet.Cells[1, "C"].Value = "Thể loại";
             worksheet.Cells[1, "D"].Value = "Cân nặng";
             worksheet.Cells[1, "E"].Value = "Trạng thái";
-            worksheet.Cells[1, "F"].Value = "Thời gian";
-            worksheet.Cells[1, "G"].Value = "Lưu trữ";
-            Range headerRange = worksheet.Range["A1:G1"];
+            worksheet.Cells[1, "F"].Value = "Thời gian nhập, xuất";
+            worksheet.Columns.AutoFit();
+            Range headerRange = worksheet.Range["A1:F1"];
             headerRange.Font.Bold = true;
             headerRange.Font.Color = Color.Green;
 
@@ -153,7 +150,6 @@ namespace TestQRcode
                 worksheet.Cells[row, "D"].Value = qr.Weight;
                 worksheet.Cells[row, "E"].Value = qr.Stats;
                 worksheet.Cells[row, "F"].Value = qr.Eitime;
-                worksheet.Cells[row, "G"].Value = qr.Stime;
                 row++;
                 worksheet.Columns.AutoFit();
             }
@@ -178,6 +174,10 @@ namespace TestQRcode
             workbook.Close();
             excel.Quit();
         }
+        private void button2_Click(object sender, EventArgs e)
+        {
+            dataGridView2.DataSource = null;
+        }
         private async void timer1_Tick(object sender, EventArgs e)
         {
             if (pictureBox1.Image != null)
@@ -190,28 +190,24 @@ namespace TestQRcode
                     if (captureDevice.IsRunning)
                         captureDevice.Stop();
                     string[] fields = result.Text.Split(';');
-                    if (fields.Length >= 7)
+                    if (fields.Length >= 6)
                     {
                         string number = fields[0];
                         string productName = fields[1];
                         string type = fields[2];
                         string weight = fields[3];
                         string stats = fields[4];
-                        string eitime = fields[5];
-                        string stime = fields[6];
-                        ThongtinQR qr = new ThongtinQR(number, productName, type, weight, stats, eitime, stime);
+
+                        DateTime eitime = DateTime.Now;
+                        string eitimeString = eitime.ToString("yyyy-MM-dd HH:mm:ss");
+
+                        ThongtinQR qr = new ThongtinQR(number, productName, type, weight, stats, eitimeString);
                         listQR.Add(qr);
                         dataGridView1.DataSource = null;
                         dataGridView1.DataSource = listQR;
 
                         dataGridView2.DataSource = null;
                         dataGridView2.DataSource = listQR;
-                    }
-                    else
-                    {
-                        if (captureDevice.IsRunning)
-                            captureDevice.Stop();
-                        MessageBox.Show("Thông tin thùng hàng bị thiếu, hãy kiểm tra lại");
                     }
 
                     await Task.Delay(5000);

@@ -32,6 +32,7 @@ namespace TestQRcode
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle13 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -40,8 +41,6 @@ namespace TestQRcode
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnStart = new System.Windows.Forms.Button();
             this.cboDevice = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,7 +63,6 @@ namespace TestQRcode
             this.Colweight1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Colstats1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Coleitime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Colstime1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -122,7 +120,7 @@ namespace TestQRcode
             this.colQRCodeNumber,
             this.ColProductName,
             this.ColWeight});
-            this.dataGridView1.Location = new System.Drawing.Point(534, 6);
+            this.dataGridView1.Location = new System.Drawing.Point(454, 3);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(434, 333);
@@ -131,8 +129,8 @@ namespace TestQRcode
             // colQRCodeNumber
             // 
             this.colQRCodeNumber.DataPropertyName = "Number";
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.colQRCodeNumber.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.colQRCodeNumber.DefaultCellStyle = dataGridViewCellStyle10;
             this.colQRCodeNumber.HeaderText = "Mã code";
             this.colQRCodeNumber.Name = "colQRCodeNumber";
             this.colQRCodeNumber.ReadOnly = true;
@@ -141,8 +139,8 @@ namespace TestQRcode
             // ColProductName
             // 
             this.ColProductName.DataPropertyName = "Productname";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColProductName.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColProductName.DefaultCellStyle = dataGridViewCellStyle11;
             this.ColProductName.HeaderText = "Tên sản phẩm";
             this.ColProductName.Name = "ColProductName";
             this.ColProductName.ReadOnly = true;
@@ -151,8 +149,8 @@ namespace TestQRcode
             // ColWeight
             // 
             this.ColWeight.DataPropertyName = "Type";
-            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColWeight.DefaultCellStyle = dataGridViewCellStyle13;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColWeight.DefaultCellStyle = dataGridViewCellStyle12;
             this.ColWeight.HeaderText = "Type";
             this.ColWeight.Name = "ColWeight";
             this.ColWeight.ReadOnly = true;
@@ -174,7 +172,7 @@ namespace TestQRcode
             this.tabControl1.Location = new System.Drawing.Point(3, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1092, 565);
+            this.tabControl1.Size = new System.Drawing.Size(1001, 565);
             this.tabControl1.TabIndex = 7;
             // 
             // tabPage1
@@ -188,7 +186,7 @@ namespace TestQRcode
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1084, 539);
+            this.tabPage1.Size = new System.Drawing.Size(993, 539);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Main";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -201,23 +199,24 @@ namespace TestQRcode
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1084, 539);
+            this.tabPage2.Size = new System.Drawing.Size(993, 539);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Data";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(974, 490);
+            this.button2.Location = new System.Drawing.Point(852, 488);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 29);
             this.button2.TabIndex = 2;
             this.button2.Text = "&Reset data";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(974, 16);
+            this.button1.Location = new System.Drawing.Point(852, 21);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(85, 38);
             this.button1.TabIndex = 1;
@@ -234,20 +233,19 @@ namespace TestQRcode
             this.Coltype1,
             this.Colweight1,
             this.Colstats1,
-            this.Coleitime1,
-            this.Colstime1});
+            this.Coleitime1});
             this.dataGridView2.Location = new System.Drawing.Point(0, 0);
             this.dataGridView2.Name = "dataGridView2";
             this.dataGridView2.ReadOnly = true;
-            this.dataGridView2.Size = new System.Drawing.Size(943, 539);
+            this.dataGridView2.Size = new System.Drawing.Size(803, 539);
             this.dataGridView2.TabIndex = 0;
             // 
             // ColqrCodeNumber1
             // 
             this.ColqrCodeNumber1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.ColqrCodeNumber1.DataPropertyName = "Number";
-            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColqrCodeNumber1.DefaultCellStyle = dataGridViewCellStyle14;
+            dataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColqrCodeNumber1.DefaultCellStyle = dataGridViewCellStyle13;
             this.ColqrCodeNumber1.HeaderText = "Mã code";
             this.ColqrCodeNumber1.Name = "ColqrCodeNumber1";
             this.ColqrCodeNumber1.ReadOnly = true;
@@ -255,8 +253,8 @@ namespace TestQRcode
             // ColproductName1
             // 
             this.ColproductName1.DataPropertyName = "productName";
-            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.ColproductName1.DefaultCellStyle = dataGridViewCellStyle15;
+            dataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.ColproductName1.DefaultCellStyle = dataGridViewCellStyle14;
             this.ColproductName1.HeaderText = "Tên sản phẩm";
             this.ColproductName1.Name = "ColproductName1";
             this.ColproductName1.ReadOnly = true;
@@ -265,8 +263,8 @@ namespace TestQRcode
             // Coltype1
             // 
             this.Coltype1.DataPropertyName = "type";
-            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Coltype1.DefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Coltype1.DefaultCellStyle = dataGridViewCellStyle15;
             this.Coltype1.HeaderText = "Loại sản phẩm";
             this.Coltype1.Name = "Coltype1";
             this.Coltype1.ReadOnly = true;
@@ -275,8 +273,8 @@ namespace TestQRcode
             // Colweight1
             // 
             this.Colweight1.DataPropertyName = "weight";
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
-            this.Colweight1.DefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.TopCenter;
+            this.Colweight1.DefaultCellStyle = dataGridViewCellStyle16;
             this.Colweight1.HeaderText = "Cân nặng";
             this.Colweight1.Name = "Colweight1";
             this.Colweight1.ReadOnly = true;
@@ -285,8 +283,8 @@ namespace TestQRcode
             // Colstats1
             // 
             this.Colstats1.DataPropertyName = "stats";
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Colstats1.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Colstats1.DefaultCellStyle = dataGridViewCellStyle17;
             this.Colstats1.HeaderText = "Tình trạng";
             this.Colstats1.Name = "Colstats1";
             this.Colstats1.ReadOnly = true;
@@ -294,28 +292,18 @@ namespace TestQRcode
             // Coleitime1
             // 
             this.Coleitime1.DataPropertyName = "eitime";
-            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Coleitime1.DefaultCellStyle = dataGridViewCellStyle19;
-            this.Coleitime1.HeaderText = "Thời gian";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.Coleitime1.DefaultCellStyle = dataGridViewCellStyle18;
+            this.Coleitime1.HeaderText = "Thời gian nhập và xuất";
             this.Coleitime1.Name = "Coleitime1";
             this.Coleitime1.ReadOnly = true;
-            this.Coleitime1.Width = 170;
-            // 
-            // Colstime1
-            // 
-            this.Colstime1.DataPropertyName = "stime";
-            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            this.Colstime1.DefaultCellStyle = dataGridViewCellStyle20;
-            this.Colstime1.HeaderText = "Lưu trữ";
-            this.Colstime1.Name = "Colstime1";
-            this.Colstime1.ReadOnly = true;
-            this.Colstime1.Width = 170;
+            this.Coleitime1.Width = 200;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1095, 566);
+            this.ClientSize = new System.Drawing.Size(1001, 566);
             this.Controls.Add(this.tabControl1);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -358,7 +346,6 @@ namespace TestQRcode
         private DataGridViewTextBoxColumn Colweight1;
         private DataGridViewTextBoxColumn Colstats1;
         private DataGridViewTextBoxColumn Coleitime1;
-        private DataGridViewTextBoxColumn Colstime1;
     }
 }
 
